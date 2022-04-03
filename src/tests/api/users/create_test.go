@@ -1,7 +1,8 @@
-package create
+package users_test
 
 import (
 	"bytes"
+	"discord-clone/src/api/users/create"
 	"discord-clone/src/constraints"
 	"encoding/json"
 	"net/http"
@@ -13,7 +14,7 @@ import (
 
 func TestCreateUser_Success(t *testing.T) {
 	chk := assert.New(t)
-	requestBody := CreateUserBody{
+	requestBody := create.CreateUserBody{
 		Name:     "test",
 		Email:    "test@domain.com",
 		Password: "123456",
@@ -38,7 +39,7 @@ func TestCreateUser_Success(t *testing.T) {
 
 func TestCreateUser_Failure(t *testing.T) {
 	chk := assert.New(t)
-	requestBody := CreateUserBody{
+	requestBody := create.CreateUserBody{
 		Name:     "test",
 		Email:    "test@domain.com",
 		Password: "12345",
