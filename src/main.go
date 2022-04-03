@@ -1,6 +1,7 @@
 package main
 
 import (
+	"discord-clone/src/config"
 	"discord-clone/src/database"
 	"discord-clone/src/router"
 	"log"
@@ -8,16 +9,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func hello(ctx *fiber.Ctx) error {
-	return ctx.Status(200).JSON(fiber.Map{
-		"message": "Hello World!",
-	})
-}
-
 func main() {
 	app := fiber.New()
 	database.Connect()
+	config.InitEnv(".env")
 
 	router.SetupRoutes(app)
-	log.Fatal(app.Listen(":3000"))
+	log.Fatal(app.Listen(config.PORT))
 }

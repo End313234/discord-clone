@@ -1,7 +1,7 @@
 package users_test
 
 import (
-	"discord-clone/src/config"
+	"discord-clone/src/tests/api"
 	"net/http"
 	"testing"
 
@@ -12,7 +12,7 @@ import (
 func TestGetAllUsers(t *testing.T) {
 	chk := assert.New(t)
 
-	response, err := http.Get(config.BASE_URL + "/users")
+	response, err := http.Get(api.BASE_URL + "/users")
 	chk.NoError(err)
 	chk.Equal(fiber.StatusOK, response.StatusCode)
 }

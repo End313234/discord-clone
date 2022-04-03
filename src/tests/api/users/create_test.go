@@ -3,7 +3,7 @@ package users_test
 import (
 	"bytes"
 	"discord-clone/src/api/users/create"
-	"discord-clone/src/config"
+	"discord-clone/src/tests/api"
 	"encoding/json"
 	"net/http"
 	"testing"
@@ -27,7 +27,7 @@ func TestCreateUser_Success(t *testing.T) {
 	client := http.Client{}
 	req, err := http.NewRequest(
 		http.MethodPost,
-		config.BASE_URL+"/users",
+		api.BASE_URL+"/users",
 		&buffer,
 	)
 	chk.NoError(err)
@@ -52,7 +52,7 @@ func TestCreateUser_Failure(t *testing.T) {
 	client := http.Client{}
 	req, err := http.NewRequest(
 		http.MethodPost,
-		config.BASE_URL+"/users",
+		api.BASE_URL+"/users",
 		&buffer,
 	)
 	chk.NoError(err)

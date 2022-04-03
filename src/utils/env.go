@@ -1,9 +1,11 @@
 package utils
 
-import "github.com/joho/godotenv"
+import (
+	"github.com/joho/godotenv"
+)
 
-func GetEnv(key string) string {
-	env, err := godotenv.Read(".env")
+func GetEnv(key string, filename string) string {
+	env, err := godotenv.Read(filename)
 	if err != nil {
 		panic(err)
 	}
