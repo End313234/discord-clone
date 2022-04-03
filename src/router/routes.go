@@ -8,7 +8,8 @@ import (
 
 func SetupRoutes(app *fiber.App) {
 	router := fiber.New()
-	router.Post("/users", users.Create)
+
+	users.RegisterRoutes(router)
 
 	app.Mount("/", router)
 }
