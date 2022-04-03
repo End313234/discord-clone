@@ -18,7 +18,7 @@ func ValidateRequestBody(body []byte, ctx *fiber.Ctx, v any) error {
 
 	err := json.Unmarshal(body, v)
 	if err != nil {
-		return errors.New("empty body")
+		return errors.New("invalid body")
 	}
 
 	if err = validate.Struct(v); err != nil {
