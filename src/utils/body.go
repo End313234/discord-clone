@@ -6,8 +6,6 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/go-playground/locales/en"
-	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	"github.com/gofiber/fiber/v2"
 )
@@ -17,9 +15,6 @@ func ValidateRequestBody(body []byte, ctx *fiber.Ctx, v any) error {
 	validate.RegisterTagNameFunc(func(field reflect.StructField) string {
 		return strings.SplitN(field.Tag.Get("json"), ",", 2)[0]
 	})
-
-	translator, _ := ut.New(en.New(), en.New()).GetTranslator("en")
-	OverrideTranslations(translator, validate)
 
 	err := json.Unmarshal(body, v)
 	if err != nil {
